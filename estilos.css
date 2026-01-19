@@ -1,1 +1,169 @@
+:root {
+    --bg-color: #f4f4f6;
+    --text-color: #333;
+    --card-bg: #ffffff;
+    --primary-pink: #d63384; /* Rosa fuerte */
+    --soft-pink: #fce4ec;     /* Rosa suave fondo */
+    --gray-locked: #e0e0e0;
+    --gray-text-locked: #9e9e9e;
+    --shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
 
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+header {
+    background-color: #fff;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    text-align: center;
+    flex-shrink: 0;
+    z-index: 10;
+}
+
+h1 {
+    color: var(--primary-pink);
+    font-weight: 600;
+}
+
+p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+/* Leyenda y Botones */
+.legend {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.badge {
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.available { background-color: white; border: 1px solid var(--primary-pink); color: var(--primary-pink); }
+.badge.approved { background-color: var(--primary-pink); color: white; }
+.badge.locked { background-color: var(--gray-locked); color: var(--gray-text-locked); }
+
+.btn-reset {
+    background-color: #444;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: background 0.3s;
+}
+
+.btn-reset:hover { background-color: #222; }
+
+/* Contenedor Principal de la Malla */
+.malla-container {
+    display: flex;
+    overflow-x: auto; /* Scroll horizontal */
+    padding: 2rem;
+    gap: 1.5rem;
+    flex-grow: 1;
+    align-items: flex-start;
+}
+
+/* Columnas de Semestres */
+.semester-column {
+    min-width: 220px;
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.semester-title {
+    font-weight: 600;
+    text-align: center;
+    color: #555;
+    background: #e9ecef;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+/* Tarjetas de Ramos */
+.subject-card {
+    background-color: var(--card-bg);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+    font-size: 0.9rem;
+    position: relative;
+}
+
+.subject-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* Estados de los ramos */
+.subject-card.available {
+    border-left-color: var(--primary-pink);
+}
+
+.subject-card.approved {
+    background-color: var(--primary-pink);
+    color: white;
+    text-decoration: line-through;
+    opacity: 0.9;
+}
+
+.subject-card.locked {
+    background-color: var(--gray-locked);
+    color: var(--gray-text-locked);
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.subject-card.locked:hover {
+    transform: none;
+}
+
+/* Notificación Flotante (Toast) */
+.notification {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 25px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+    text-align: center;
+    max-width: 90%;
+}
+
+.notification.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
