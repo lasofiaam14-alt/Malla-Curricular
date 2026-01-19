@@ -1,1 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malla Curricular Interactiva</title>
+    <link rel="stylesheet" href="estilos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
 
+    <header>
+        <h1>Malla Curricular</h1>
+        <p>Selecciona los ramos aprobados. El sistema validará los prerrequisitos automáticamente.</p>
+        <div class="legend">
+            <span class="badge available">Disponible</span>
+            <span class="badge approved">Aprobado</span>
+            <span class="badge locked">Bloqueado</span>
+        </div>
+        <button id="reset-btn" class="btn-reset">Reiniciar Malla</button>
+    </header>
+
+    <div id="notification" class="notification hidden"></div>
+
+    <main id="malla-container" class="malla-container">
+        </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
